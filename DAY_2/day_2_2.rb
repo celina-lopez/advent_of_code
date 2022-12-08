@@ -16,15 +16,12 @@ total_score = 0
 file_data.each do |elf_weapon_key, outcome_key|
   elf_weapon = WEAPONS[elf_weapon_key.to_sym]
   outcome = OUTCOMES[outcome_key.to_sym]
-  # you win
   if outcome == :WIN
-    total_score+= VALUES[LOSSING_OUTCOMES[elf_weapon]] + 6
-  # draw 
+    total_score+= VALUES[LOSSING_OUTCOMES[elf_weapon]] + WIN
   elsif outcome == :DRAW
-    total_score+= VALUES[elf_weapon] + 3
-  #  you lose
+    total_score+= VALUES[elf_weapon] + DRAW
   else
-    total_score+= VALUES[WINNING_OUTCOMES[elf_weapon]]
+    total_score+= VALUES[WINNING_OUTCOMES[elf_weapon]] + LOST
   end
 end
 
